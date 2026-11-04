@@ -1,0 +1,58 @@
+# Publishes n8n/ (n8n-nodes-juzpost) to npm with provenance attestation, which n8n
+# requires for verified community nodes from May 1, 2026.
+#
+# Triggers:
+#   - a pushed tag that looks like a version (0.2.0, 1.0.0 ...), as created by
+#     `npm run release` inside n8n/
+#   - manual run from the Actions tab (workflow_dispatch)
+#
+# Auth, option A (recommended, no secret): on npmjs.com open the package
+# n8n-nodes-juzpost, Settings, Publishing access, Trusted Publishers, add
+#   repository owner: juzpost, repository: juzpost-integrations,
+#   workflow name: publish-n8n.yml
+# For the very first publish the package does not exist yet, so either create the
+# trusted publisher under your npm user "Trusted publishing" settings, or use option B once.
+# Auth, option B: a granular npm token with read/write publish permission stored as
+# the repository secret NPM_TOKEN.
+name: Publish n8n node
+
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: n8n
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          registry-url: 'https://registry.npmjs.org'
+          cache: npm
+          cache-dependency-path: n8n/package-lock.json
+
+      - run: npm ci
+
+      - run: npm run lint
+
+      - run: npm run build
+
+      - name: Publish to npm with provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ -n "$NODE_AUTH_TOKEN" ]; then
+            echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+          fi
+          npm publish --provenance --access public
