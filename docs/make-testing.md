@@ -10,6 +10,17 @@ The app was written from the Make Custom Apps documentation and the JuzPost Open
 
 ## 2. Deploy from this repo
 
+**Option A, one command (no VS Code needed).** In Make click your avatar, Profile, API, Add token, with the scopes `sdk-apps:read` and `sdk-apps:write`. Save the token as `.secrets/make-apikey` at the repo root (gitignored). Then:
+
+```
+MAKE_ZONE=eu2 python3 scripts/deploy_make.py --dry-run   # prints the plan
+MAKE_ZONE=eu2 python3 scripts/deploy_make.py             # creates the app and every component
+```
+
+Use the zone from your Make URL (`eu1`, `eu2`, `us1`, `us2`). The script creates the app itself if it does not exist, so step 1 above is only needed when you prefer to create it by hand. Re-running updates everything in place. The connection name Make assigns is recorded in `make/.deploy-state.json`; commit it.
+
+**Option B, VS Code extension.**
+
 1. Install the **Make Apps Editor** VS Code extension and open this repository.
 2. Create `.secrets/make-apikey` at the repo root with a Make API token that has the custom-apps scopes (`apps:read`, `apps:write`). The folder is gitignored.
 3. In `make/makecomapp.json` set `origins[0].appId` to the ID from step 1 and `baseUrl` to your zone's API (`https://eu1.make.com/api`, `https://eu2.make.com/api`, `https://us1.make.com/api`, ...).
