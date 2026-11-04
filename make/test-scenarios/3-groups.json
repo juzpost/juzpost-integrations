@@ -1,0 +1,97 @@
+{
+  "name": "JuzPost test 3: groups",
+  "flow": [
+    {
+      "id": 1,
+      "module": "app#juzpost-k2gkrv:listGroups",
+      "version": 1,
+      "parameters": {
+        "__IMTCONN__": 12133451
+      },
+      "mapper": {
+        "limit": "5"
+      },
+      "metadata": {
+        "designer": {
+          "x": 0,
+          "y": 0
+        },
+        "restore": {
+          "parameters": {
+            "__IMTCONN__": {
+              "data": {
+                "scoped": "true",
+                "connection": "app#juzpost-k2gkrv"
+              },
+              "label": "Jeeva's JuzPost API key connection"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTCONN__",
+            "type": "account:app#juzpost-k2gkrv",
+            "label": "Connection",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "module": "app#juzpost-k2gkrv:getGroup",
+      "version": 1,
+      "parameters": {
+        "__IMTCONN__": 12133451
+      },
+      "mapper": {
+        "groupId": "{{1.id}}"
+      },
+      "metadata": {
+        "designer": {
+          "x": 300,
+          "y": 0
+        },
+        "restore": {
+          "parameters": {
+            "__IMTCONN__": {
+              "data": {
+                "scoped": "true",
+                "connection": "app#juzpost-k2gkrv"
+              },
+              "label": "Jeeva's JuzPost API key connection"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTCONN__",
+            "type": "account:app#juzpost-k2gkrv",
+            "label": "Connection",
+            "required": true
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "instant": false,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "slots": null,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false
+    },
+    "designer": {
+      "orphans": []
+    },
+    "zone": "us2.make.com"
+  }
+}

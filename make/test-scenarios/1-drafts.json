@@ -1,0 +1,440 @@
+{
+  "name": "JuzPost test 1: drafts and media (no publishing)",
+  "flow": [
+    {
+      "id": 1,
+      "module": "app#juzpost-k2gkrv:getMyAccount",
+      "version": 1,
+      "parameters": {
+        "__IMTCONN__": 12133451
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": {
+          "x": 0,
+          "y": 0
+        },
+        "restore": {
+          "parameters": {
+            "__IMTCONN__": {
+              "data": {
+                "scoped": "true",
+                "connection": "app#juzpost-k2gkrv"
+              },
+              "label": "Jeeva's JuzPost API key connection"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTCONN__",
+            "type": "account:app#juzpost-k2gkrv",
+            "label": "Connection",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "module": "app#juzpost-k2gkrv:listAccounts",
+      "version": 1,
+      "parameters": {
+        "__IMTCONN__": 12133451
+      },
+      "mapper": {
+        "limit": "1"
+      },
+      "metadata": {
+        "designer": {
+          "x": 300,
+          "y": 0
+        },
+        "restore": {
+          "parameters": {
+            "__IMTCONN__": {
+              "data": {
+                "scoped": "true",
+                "connection": "app#juzpost-k2gkrv"
+              },
+              "label": "Jeeva's JuzPost API key connection"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTCONN__",
+            "type": "account:app#juzpost-k2gkrv",
+            "label": "Connection",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "module": "http:ActionGetFile",
+      "version": 3,
+      "parameters": {
+        "handleErrors": false
+      },
+      "mapper": {
+        "url": "https://cdn.juzpost.com/brand/icon.png",
+        "method": "get",
+        "headers": [],
+        "qs": [],
+        "serializeUrl": false,
+        "shareCookies": false,
+        "timeout": "",
+        "useMtls": false,
+        "followRedirect": true,
+        "followAllRedirects": false,
+        "rejectUnauthorized": true
+      },
+      "metadata": {
+        "designer": {
+          "x": 600,
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": 4,
+      "module": "app#juzpost-k2gkrv:uploadMedia",
+      "version": 1,
+      "parameters": {
+        "__IMTCONN__": 12133451
+      },
+      "mapper": {
+        "fileName": "make-test-icon.png",
+        "data": "{{3.data}}",
+        "contentType": "image/png"
+      },
+      "metadata": {
+        "designer": {
+          "x": 900,
+          "y": 0
+        },
+        "restore": {
+          "parameters": {
+            "__IMTCONN__": {
+              "data": {
+                "scoped": "true",
+                "connection": "app#juzpost-k2gkrv"
+              },
+              "label": "Jeeva's JuzPost API key connection"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTCONN__",
+            "type": "account:app#juzpost-k2gkrv",
+            "label": "Connection",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "module": "app#juzpost-k2gkrv:createPost",
+      "version": 1,
+      "parameters": {
+        "__IMTCONN__": 12133451
+      },
+      "mapper": {
+        "content": "Make integration test draft. Never scheduled.",
+        "type": "image",
+        "mediaKeys": [
+          "{{4.mediaKey}}"
+        ],
+        "title": "Make test",
+        "hashtags": [
+          "make",
+          "test"
+        ]
+      },
+      "metadata": {
+        "designer": {
+          "x": 1200,
+          "y": 0
+        },
+        "restore": {
+          "parameters": {
+            "__IMTCONN__": {
+              "data": {
+                "scoped": "true",
+                "connection": "app#juzpost-k2gkrv"
+              },
+              "label": "Jeeva's JuzPost API key connection"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTCONN__",
+            "type": "account:app#juzpost-k2gkrv",
+            "label": "Connection",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "module": "app#juzpost-k2gkrv:getPost",
+      "version": 1,
+      "parameters": {
+        "__IMTCONN__": 12133451
+      },
+      "mapper": {
+        "postId": "{{5.id}}"
+      },
+      "metadata": {
+        "designer": {
+          "x": 1500,
+          "y": 0
+        },
+        "restore": {
+          "parameters": {
+            "__IMTCONN__": {
+              "data": {
+                "scoped": "true",
+                "connection": "app#juzpost-k2gkrv"
+              },
+              "label": "Jeeva's JuzPost API key connection"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTCONN__",
+            "type": "account:app#juzpost-k2gkrv",
+            "label": "Connection",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "module": "app#juzpost-k2gkrv:updatePost",
+      "version": 1,
+      "parameters": {
+        "__IMTCONN__": 12133451
+      },
+      "mapper": {
+        "postId": "{{5.id}}",
+        "content": "Make integration test draft, updated."
+      },
+      "metadata": {
+        "designer": {
+          "x": 1800,
+          "y": 0
+        },
+        "restore": {
+          "parameters": {
+            "__IMTCONN__": {
+              "data": {
+                "scoped": "true",
+                "connection": "app#juzpost-k2gkrv"
+              },
+              "label": "Jeeva's JuzPost API key connection"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTCONN__",
+            "type": "account:app#juzpost-k2gkrv",
+            "label": "Connection",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "module": "app#juzpost-k2gkrv:smartSchedule",
+      "version": 1,
+      "parameters": {
+        "__IMTCONN__": 12133451
+      },
+      "mapper": {
+        "minPerDay": 1,
+        "socialAccountIds": [
+          "{{2.id}}"
+        ],
+        "postIds": [
+          "{{5.id}}"
+        ],
+        "times": [
+          "09:00"
+        ],
+        "dryRun": true
+      },
+      "metadata": {
+        "designer": {
+          "x": 2100,
+          "y": 0
+        },
+        "restore": {
+          "parameters": {
+            "__IMTCONN__": {
+              "data": {
+                "scoped": "true",
+                "connection": "app#juzpost-k2gkrv"
+              },
+              "label": "Jeeva's JuzPost API key connection"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTCONN__",
+            "type": "account:app#juzpost-k2gkrv",
+            "label": "Connection",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "module": "app#juzpost-k2gkrv:deletePost",
+      "version": 1,
+      "parameters": {
+        "__IMTCONN__": 12133451
+      },
+      "mapper": {
+        "postId": "{{5.id}}"
+      },
+      "metadata": {
+        "designer": {
+          "x": 2400,
+          "y": 0
+        },
+        "restore": {
+          "parameters": {
+            "__IMTCONN__": {
+              "data": {
+                "scoped": "true",
+                "connection": "app#juzpost-k2gkrv"
+              },
+              "label": "Jeeva's JuzPost API key connection"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTCONN__",
+            "type": "account:app#juzpost-k2gkrv",
+            "label": "Connection",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "module": "app#juzpost-k2gkrv:makeApiCall",
+      "version": 1,
+      "parameters": {
+        "__IMTCONN__": 12133451
+      },
+      "mapper": {
+        "url": "/workspace",
+        "method": "GET",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "qs": []
+      },
+      "metadata": {
+        "designer": {
+          "x": 2700,
+          "y": 0
+        },
+        "restore": {
+          "parameters": {
+            "__IMTCONN__": {
+              "data": {
+                "scoped": "true",
+                "connection": "app#juzpost-k2gkrv"
+              },
+              "label": "Jeeva's JuzPost API key connection"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTCONN__",
+            "type": "account:app#juzpost-k2gkrv",
+            "label": "Connection",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "module": "app#juzpost-k2gkrv:listPosts",
+      "version": 1,
+      "parameters": {
+        "__IMTCONN__": 12133451
+      },
+      "mapper": {
+        "limit": "3"
+      },
+      "metadata": {
+        "designer": {
+          "x": 3000,
+          "y": 0
+        },
+        "restore": {
+          "parameters": {
+            "__IMTCONN__": {
+              "data": {
+                "scoped": "true",
+                "connection": "app#juzpost-k2gkrv"
+              },
+              "label": "Jeeva's JuzPost API key connection"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTCONN__",
+            "type": "account:app#juzpost-k2gkrv",
+            "label": "Connection",
+            "required": true
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "instant": false,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "slots": null,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false
+    },
+    "designer": {
+      "orphans": []
+    },
+    "zone": "us2.make.com"
+  }
+}

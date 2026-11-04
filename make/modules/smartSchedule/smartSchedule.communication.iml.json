@@ -5,7 +5,7 @@
         "Authorization": "Bearer {{connection.apiKey}}"
     },
     "body": {
-        "minPerDay": "{{parameters.minPerDay}}",
+        "minPerDay": "{{parseNumber(parameters.minPerDay, '.')}}",
         "group": "{{parameters.group}}",
         "socialAccountIds": "{{parameters.socialAccountIds}}",
         "postIds": "{{parameters.postIds}}",

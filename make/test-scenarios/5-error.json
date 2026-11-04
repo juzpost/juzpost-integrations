@@ -1,0 +1,102 @@
+{
+  "name": "JuzPost test 5: API error handling",
+  "flow": [
+    {
+      "id": 1,
+      "module": "app#juzpost-k2gkrv:createPost",
+      "version": 1,
+      "parameters": {
+        "__IMTCONN__": 12133451
+      },
+      "mapper": {
+        "content": "Make error-handling test draft.",
+        "type": "text"
+      },
+      "metadata": {
+        "designer": {
+          "x": 0,
+          "y": 0
+        },
+        "restore": {
+          "parameters": {
+            "__IMTCONN__": {
+              "data": {
+                "scoped": "true",
+                "connection": "app#juzpost-k2gkrv"
+              },
+              "label": "Jeeva's JuzPost API key connection"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTCONN__",
+            "type": "account:app#juzpost-k2gkrv",
+            "label": "Connection",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "module": "app#juzpost-k2gkrv:schedulePost",
+      "version": 1,
+      "parameters": {
+        "__IMTCONN__": 12133451
+      },
+      "mapper": {
+        "postId": "{{1.id}}",
+        "socialAccountIds": [
+          "00000000-0000-4000-8000-000000000000"
+        ],
+        "publishAt": "2020-01-01T00:00:00.000Z"
+      },
+      "metadata": {
+        "designer": {
+          "x": 300,
+          "y": 0
+        },
+        "restore": {
+          "parameters": {
+            "__IMTCONN__": {
+              "data": {
+                "scoped": "true",
+                "connection": "app#juzpost-k2gkrv"
+              },
+              "label": "Jeeva's JuzPost API key connection"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTCONN__",
+            "type": "account:app#juzpost-k2gkrv",
+            "label": "Connection",
+            "required": true
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "instant": false,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "slots": null,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false
+    },
+    "designer": {
+      "orphans": []
+    },
+    "zone": "us2.make.com"
+  }
+}

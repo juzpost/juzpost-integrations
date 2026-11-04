@@ -9,7 +9,7 @@
             "relativeKey": "media/{{parameters.fileName}}",
             "contentType": "{{parameters.contentType}}",
             "operation": "upload",
-            "contentLength": "{{ifempty(parameters.contentLength, length(parameters.data))}}"
+            "contentLength": "{{parseNumber(ifempty(parameters.contentLength, length(parameters.data)), '.')}}"
         },
         "response": {
             "temp": {
