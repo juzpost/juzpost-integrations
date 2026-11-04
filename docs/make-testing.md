@@ -59,4 +59,8 @@ Use a throwaway JuzPost workspace with one connected account.
 
 ## 5. Submit for review
 
+State on 2026-11-04: the app is **published** (irreversible), all 14 modules are **visible**, and the review form is saved with the API doc link (https://api.juzpost.com/docs), the test scenario "Integration JuzPost" (https://us2.make.com/3359589/scenarios/6894766/edit) for every module and as the error scenario. Saving the form through `PUT /sdk/apps/{app}/1/review/form` logged "Approval requested" (status 0). The scenario has never run: it has no connection yet. Reviewers check execution logs, so before they look, or when they ask: create the connection with a JuzPost API key, build the per-module scenarios from section 4, run them, and update the form (`scripts/review_form.py` or the Review tab, "Update review").
+
+The form's API shape: `{"apiDoc": url, "errorHandlingScenario": scenarioUrl, "testingScenarios": {moduleName: scenarioUrl}}`; scenario URLs must match `https://us2.make.com/<team>/scenarios/<id>/edit`.
+
 Make reviews custom apps before they are public. The listing copy is in `docs/make-listing.md`. Requirements that matter for approval: every module has a description, interface and sample; the connection validates the key; no secrets in `common`; the universal module is named "Make an API Call".
