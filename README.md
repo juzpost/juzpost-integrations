@@ -6,7 +6,8 @@ Third-party platform integrations for [JuzPost](https://www.juzpost.com), the so
 |---|---|---|
 | [`make/`](make/) | [Make](https://www.make.com) custom app (14 modules, 3 RPCs) | built, needs first deploy + review |
 | [`n8n/`](n8n/) | n8n community node `n8n-nodes-juzpost` (action node with 5 resources, polling trigger) | built, lint-clean, not yet published to npm |
-| `pipedream/` | Pipedream components | planned |
+| [`pipedream/`](pipedream/) | Pipedream components (7 actions, 2 polling sources) | written, PR waits on Pipedream creating the app (issue #22281) |
+| [`lobehub/`](lobehub/) | LobeHub MCP Marketplace manifest for the hosted MCP server | draft, owner publishes with the lhm CLI |
 
 ## Why a separate repository
 
@@ -27,6 +28,8 @@ make/            the Make app, in Make Apps SDK local-development layout
   rpcs/             dynamic dropdowns (accounts, groups)
   test-scenarios/   blueprints used for the Make review run
 n8n/             npm package n8n-nodes-juzpost (credentials/, nodes/JuzPost/)
+pipedream/juzpost/  Pipedream app file, actions/, sources/ for a PR to PipedreamHQ/pipedream
+lobehub/         lhm.plugin.json draft for the LobeHub MCP Marketplace
 scripts/         generators and helpers
 docs/            listing copy, test plan, review notes
 ```

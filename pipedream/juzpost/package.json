@@ -1,0 +1,21 @@
+{
+  "name": "@pipedream/juzpost",
+  "version": "0.1.0",
+  "description": "Pipedream JuzPost Components",
+  "main": "juzpost.app.mjs",
+  "keywords": [
+    "pipedream",
+    "juzpost",
+    "social-media",
+    "scheduler"
+  ],
+  "homepage": "https://pipedream.com/apps/juzpost",
+  "author": "JuzPost (https://www.juzpost.com)",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@pipedream/platform": "^3.0.3"
+  }
+}

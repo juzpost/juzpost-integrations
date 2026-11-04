@@ -1,0 +1,103 @@
+{
+  "identifier": "juzpost",
+  "name": "JuzPost",
+  "version": "2.0.0",
+  "author": "JuzPost",
+  "authorUrl": "https://www.juzpost.com",
+  "homepage": "https://www.juzpost.com",
+  "description": "Schedule and publish social media posts to YouTube, TikTok, Instagram, Facebook, X, LinkedIn, Pinterest, Threads, Bluesky, Tumblr and WordPress from one calendar. Free plan with low-cost paid plans.",
+  "category": "productivity",
+  "tags": [
+    "social-media",
+    "scheduler",
+    "marketing",
+    "content",
+    "youtube",
+    "tiktok",
+    "instagram",
+    "linkedin",
+    "bluesky"
+  ],
+  "icon": "https://cdn.juzpost.com/brand/icon.png",
+  "cloudEndpoint": "https://www.juzpost.com/mcp",
+  "tools": [
+    {
+      "name": "get_context",
+      "description": "Get connection context"
+    },
+    {
+      "name": "list_workspaces",
+      "description": "List workspaces"
+    },
+    {
+      "name": "switch_workspace",
+      "description": "Switch workspace"
+    },
+    {
+      "name": "list_accounts",
+      "description": "List connected accounts"
+    },
+    {
+      "name": "list_options",
+      "description": "List choices for an account"
+    },
+    {
+      "name": "get_platform_limits",
+      "description": "Get platform limits"
+    },
+    {
+      "name": "list_groups",
+      "description": "List channel groups"
+    },
+    {
+      "name": "list_posts",
+      "description": "List posts"
+    },
+    {
+      "name": "get_post",
+      "description": "Get a post"
+    },
+    {
+      "name": "create_post",
+      "description": "Create a draft post"
+    },
+    {
+      "name": "update_post",
+      "description": "Update a post"
+    },
+    {
+      "name": "delete_post",
+      "description": "Delete a post"
+    },
+    {
+      "name": "schedule_post",
+      "description": "Schedule a post"
+    },
+    {
+      "name": "upload_file",
+      "description": "Upload a file from the device"
+    },
+    {
+      "name": "upload_media",
+      "description": "Upload media"
+    },
+    {
+      "name": "create_upload_url",
+      "description": "Create an upload URL"
+    },
+    {
+      "name": "upload_begin",
+      "description": "Start a card upload"
+    },
+    {
+      "name": "upload_part",
+      "description": "Send an upload part"
+    },
+    {
+      "name": "upload_finish",
+      "description": "Finish a card upload"
+    }
+  ],
+  "prompts": [],
+  "resources": []
+}
