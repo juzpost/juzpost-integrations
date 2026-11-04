@@ -5,7 +5,7 @@ Third-party platform integrations for [JuzPost](https://www.juzpost.com), the so
 | Folder | Platform | Status |
 |---|---|---|
 | [`make/`](make/) | [Make](https://www.make.com) custom app (14 modules, 3 RPCs) | built, needs first deploy + review |
-| [`n8n/`](n8n/) | n8n community node `n8n-nodes-juzpost` (action node with 5 resources, polling trigger) | published: [n8n-nodes-juzpost@0.2.0](https://www.npmjs.com/package/n8n-nodes-juzpost) with provenance; verification pending at n8n |
+| [`n8n/`](n8n/) | n8n community node `n8n-nodes-juzpost` (action node with 5 resources, polling trigger) | published: [n8n-nodes-juzpost@0.2.0](https://www.npmjs.com/package/n8n-nodes-juzpost) with provenance; demo video submitted 2026-11-04, n8n manual review (up to 4 weeks) |
 | [`pipedream/`](pipedream/) | Pipedream components (7 actions, 2 polling sources) | written, PR waits on Pipedream creating the app (issue #22281) |
 | [`lobehub/`](lobehub/) | LobeHub MCP Marketplace manifest for the hosted MCP server | draft, owner publishes with the lhm CLI |
 
