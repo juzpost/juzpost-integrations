@@ -57,6 +57,10 @@ Use a throwaway JuzPost workspace with one connected account.
 8. **Delete a Draft Post** on a second draft. Expect `deleted: true`.
 9. **Smart Schedule Posts** with `dryRun` on and one draft. Expect a plan and no timers.
 
+## 4b. Test run of 2026-11-04 (done)
+
+Workspace Game Plux (test), connection 12133451. Scenarios imported from `make/test-scenarios/*.json` (generator `scripts/gen_make_test_scenarios.py <connectionId>`): 6894914 drafts and media (11 modules, green after the parseNumber fix), 6894999 list accounts (9 bundles), 6895015 groups, 6895025 watch posts, 6895037 error handling (Schedule a Post with a fake account and a past date returns "[400] Scheduled time must be at least 10 minutes in the future", nothing published). Review form updated with these links (`make/test-scenarios/review-form.json`). Lessons: custom-app modules are `app#<appName>:<module>` in blueprints; `toNumber` is not an IML function, `parseNumber(x, '.')` is; the editor caches the app, reload it after a redeploy; cmd+S saves and cmd+Enter runs once.
+
 ## 5. Submit for review
 
 State on 2026-11-04: the app is **published** (irreversible), all 14 modules are **visible**, and the review form is saved with the API doc link (https://api.juzpost.com/docs), the test scenario "Integration JuzPost" (https://us2.make.com/3359589/scenarios/6894766/edit) for every module and as the error scenario. Saving the form through `PUT /sdk/apps/{app}/1/review/form` logged "Approval requested" (status 0). The scenario has never run: it has no connection yet. Reviewers check execution logs, so before they look, or when they ask: create the connection with a JuzPost API key, build the per-module scenarios from section 4, run them, and update the form (`scripts/review_form.py` or the Review tab, "Update review").

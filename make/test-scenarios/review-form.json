@@ -1,0 +1,20 @@
+{
+  "apiDoc": "https://api.juzpost.com/docs",
+  "errorHandlingScenario": "https://us2.make.com/3359589/scenarios/6895037/edit",
+  "testingScenarios": {
+    "getMyAccount": "https://us2.make.com/3359589/scenarios/6894914/edit",
+    "uploadMedia": "https://us2.make.com/3359589/scenarios/6894914/edit",
+    "createPost": "https://us2.make.com/3359589/scenarios/6894914/edit",
+    "getPost": "https://us2.make.com/3359589/scenarios/6894914/edit",
+    "updatePost": "https://us2.make.com/3359589/scenarios/6894914/edit",
+    "smartSchedule": "https://us2.make.com/3359589/scenarios/6894914/edit",
+    "deletePost": "https://us2.make.com/3359589/scenarios/6894914/edit",
+    "makeApiCall": "https://us2.make.com/3359589/scenarios/6894914/edit",
+    "listPosts": "https://us2.make.com/3359589/scenarios/6894914/edit",
+    "listAccounts": "https://us2.make.com/3359589/scenarios/6894999/edit",
+    "listGroups": "https://us2.make.com/3359589/scenarios/6895015/edit",
+    "getGroup": "https://us2.make.com/3359589/scenarios/6895015/edit",
+    "watchPosts": "https://us2.make.com/3359589/scenarios/6895025/edit",
+    "schedulePost": "https://us2.make.com/3359589/scenarios/6895037/edit"
+  }
+}
