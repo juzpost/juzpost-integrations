@@ -55,4 +55,5 @@ jobs:
           if [ -n "$NODE_AUTH_TOKEN" ]; then
             echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
           fi
-          npm publish --provenance --access public
+          # --ignore-scripts: n8n-node prerelease (prepublishOnly) only allows `npm run release`; build + lint already ran above
+          npm publish --provenance --access public --ignore-scripts
