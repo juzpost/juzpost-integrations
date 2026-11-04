@@ -68,3 +68,7 @@ State on 2026-11-04: the app is **published** (irreversible), all 14 modules are
 The form's API shape: `{"apiDoc": url, "errorHandlingScenario": scenarioUrl, "testingScenarios": {moduleName: scenarioUrl}}`; scenario URLs must match `https://us2.make.com/<team>/scenarios/<id>/edit`.
 
 Make reviews custom apps before they are public. The listing copy is in `docs/make-listing.md`. Requirements that matter for approval: every module has a description, interface and sample; the connection validates the key; no secrets in `common`; the universal module is named "Make an API Call".
+
+# n8n node: status
+
+Built and lint-clean on 2026-11-04 (`cd n8n && npm run build && npm run lint`). Not run against the live API: no JuzPost key is stored on this machine. To test: `npm run dev` in `n8n/` starts a local n8n with the node loaded; create the credential with a key, then run Workspace, Get My Account and the Post flow with dry-run Smart Schedule. To publish: `npm run release` (needs the npm account; n8n requires provenance via GitHub Actions from May 2026, see the n8n-nodes-starter publish workflow). Then submit at https://n8n.io/creators/ for the verified community node listing.
