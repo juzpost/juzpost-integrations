@@ -17,7 +17,7 @@ MAKE_ZONE=eu2 python3 scripts/deploy_make.py --dry-run   # prints the plan
 MAKE_ZONE=eu2 python3 scripts/deploy_make.py             # creates the app and every component
 ```
 
-Use the zone from your Make URL (`eu1`, `eu2`, `us1`, `us2`). The script creates the app itself if it does not exist, so step 1 above is only needed when you prefer to create it by hand. Re-running updates everything in place. The connection name Make assigns is recorded in `make/.deploy-state.json`; commit it.
+Use the zone from your Make URL (`eu1`, `eu2`, `us1`, `us2`). The script creates the app itself if it does not exist, so step 1 above is only needed when you prefer to create it by hand. Re-running updates everything in place. Make appends a random suffix to the app name (ours is `juzpost-k2gkrv`) and reuses it for the connection; both are recorded in `make/.deploy-state.json`, which is committed. Deployed to zone us2 on 2026-11-04.
 
 **Option B, VS Code extension.**
 

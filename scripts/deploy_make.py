@@ -53,6 +53,8 @@ class Make:
             return {}
         req = urllib.request.Request(url, data=data, method=method)
         req.add_header("Authorization", f"Token {self.tok}")
+        req.add_header("User-Agent", "juzpost-integrations-deploy/1.0")
+        req.add_header("Accept", "application/json")
         if data is not None:
             req.add_header("Content-Type", ctype)
         try:
@@ -61,7 +63,7 @@ class Make:
                 return json.loads(txt) if txt.startswith(("{", "[")) else {"raw": txt}
         except urllib.error.HTTPError as e:
             txt = e.read().decode()
-            if e.code == 404 and ok404:
+            if ok404 and (e.code == 404 or (e.code == 403 and "not found" in txt.lower())):
                 return None
             raise SystemExit(f"{method} {path} -> HTTP {e.code}: {txt[:500]}")
 
@@ -76,27 +78,34 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
     zone = os.environ.get("MAKE_ZONE", "eu2")
-    name = os.environ.get("MAKE_APP_NAME", "juzpost")
-    ver = int(os.environ.get("MAKE_APP_VER", "1"))
-    m = Make(zone, "dry" if a.dry_run else token(), a.dry_run)
     manifest = json.load(open(os.path.join(APP_DIR, "makecomapp.json")))
     state_path = os.path.join(APP_DIR, ".deploy-state.json")
     state = json.load(open(state_path)) if os.path.exists(state_path) else {}
+    # Make appends a random suffix to the app name it assigns; the state file remembers it.
+    name = os.environ.get("MAKE_APP_NAME") or state.get("appName") or "juzpost"
+    ver = int(os.environ.get("MAKE_APP_VER", "1"))
+    m = Make(zone, "dry" if a.dry_run else token(), a.dry_run)
 
     print(f"App {name} v{ver} on {zone}")
     app = m.call("GET", f"/sdk/apps/{name}/{ver}", ok404=True)
     if app is None:
         print("Creating app")
-        m.call("POST", "/sdk/apps", {"app": {
+        r = m.call("POST", "/sdk/apps", {
             "name": name, "label": "JuzPost", "version": ver,
             "description": "Schedule and publish social media posts to 11 platforms from one calendar.",
-            "theme": "#7C3AED", "language": "en", "countries": [], "beta": False, "public": False}})
+            "theme": "#7C3AED", "language": "en", "countries": [], "beta": False, "public": False})
+        if not m.dry:
+            name = (r.get("app") or r).get("name", name)
+            state["appName"] = name
+            json.dump(state, open(state_path, "w"), indent=2)
+            print(f"Make assigned the app name {name}")
+    if not m.dry:
+        m.call("PATCH", f"/sdk/apps/{name}/{ver}", {"theme": "#7C3AED", "description": "Schedule and publish social media posts to 11 platforms from one calendar."})
 
     g = manifest["generalCodeFiles"]
     print("Base, readme, groups, icon")
-    m.call("POST", f"/sdk/apps/{name}/{ver}/base", read(g["base"]), "application/jsonc")
+    m.call("PUT", f"/sdk/apps/{name}/{ver}/base", read(g["base"]), "application/jsonc")
     m.call("PUT", f"/sdk/apps/{name}/{ver}/readme", read(g["readme"]), "text/markdown")
-    m.call("PUT", f"/sdk/apps/{name}/{ver}/groups", read(g["groups"]), "application/jsonc")
     icon = os.path.join(ROOT, "assets", "juzpost-make-logo.png")
     if os.path.exists(icon):
         m.call("PUT", f"/sdk/apps/{name}/{ver}/icon", open(icon, "rb").read(), "image/png")
@@ -139,6 +148,8 @@ def main():
             if rel:
                 m.call("PUT", f"/sdk/apps/{name}/{ver}/modules/{mod}/{section}", read(rel), "application/jsonc")
 
+    print("Groups (after modules exist)")
+    m.call("PUT", f"/sdk/apps/{name}/{ver}/groups", read(g["groups"]), "application/jsonc")
     print("Done. Open Make, Custom apps, JuzPost, and run docs/make-testing.md section 4.")
 
 
