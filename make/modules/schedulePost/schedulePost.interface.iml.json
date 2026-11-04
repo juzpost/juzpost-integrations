@@ -1,0 +1,39 @@
+[
+    {
+        "name": "success",
+        "type": "boolean",
+        "label": "Success"
+    },
+    {
+        "name": "results",
+        "type": "array",
+        "label": "Results",
+        "spec": [
+            {
+                "name": "socialAccountId",
+                "type": "text",
+                "label": "Account ID"
+            },
+            {
+                "name": "platform",
+                "type": "text",
+                "label": "Platform"
+            },
+            {
+                "name": "username",
+                "type": "text",
+                "label": "Username"
+            },
+            {
+                "name": "status",
+                "type": "text",
+                "label": "Status"
+            },
+            {
+                "name": "error",
+                "type": "text",
+                "label": "Error"
+            }
+        ]
+    }
+]

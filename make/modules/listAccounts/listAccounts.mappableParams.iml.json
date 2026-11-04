@@ -1,0 +1,107 @@
+[
+    {
+        "name": "platform",
+        "type": "select",
+        "label": "Platform",
+        "help": "Only accounts on this network.",
+        "options": [
+            {
+                "label": "Youtube",
+                "value": "youtube"
+            },
+            {
+                "label": "Tiktok",
+                "value": "tiktok"
+            },
+            {
+                "label": "Instagram",
+                "value": "instagram"
+            },
+            {
+                "label": "Facebook",
+                "value": "facebook"
+            },
+            {
+                "label": "X",
+                "value": "x"
+            },
+            {
+                "label": "Linkedin",
+                "value": "linkedin"
+            },
+            {
+                "label": "Pinterest",
+                "value": "pinterest"
+            },
+            {
+                "label": "Threads",
+                "value": "threads"
+            },
+            {
+                "label": "Bluesky",
+                "value": "bluesky"
+            },
+            {
+                "label": "Tumblr",
+                "value": "tumblr"
+            },
+            {
+                "label": "Wordpress",
+                "value": "wordpress"
+            }
+        ]
+    },
+    {
+        "name": "groupId",
+        "type": "select",
+        "label": "Channel Group",
+        "options": "rpc://listGroups",
+        "help": "Only accounts that belong to this channel group."
+    },
+    {
+        "name": "sort",
+        "type": "select",
+        "label": "Sort By",
+        "default": "createdAt",
+        "advanced": true,
+        "options": [
+            {
+                "label": "Connected At",
+                "value": "createdAt"
+            },
+            {
+                "label": "Username",
+                "value": "username"
+            },
+            {
+                "label": "Platform",
+                "value": "platform"
+            }
+        ]
+    },
+    {
+        "name": "order",
+        "type": "select",
+        "label": "Order",
+        "default": "desc",
+        "advanced": true,
+        "options": [
+            {
+                "label": "Descending",
+                "value": "desc"
+            },
+            {
+                "label": "Ascending",
+                "value": "asc"
+            }
+        ]
+    },
+    {
+        "name": "limit",
+        "type": "uinteger",
+        "label": "Limit",
+        "default": 20,
+        "required": true,
+        "help": "Maximum number of results to return and work with during one execution cycle."
+    }
+]

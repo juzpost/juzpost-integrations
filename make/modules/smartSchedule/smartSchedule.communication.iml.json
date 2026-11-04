@@ -1,0 +1,19 @@
+{
+    "url": "/schedule",
+    "method": "POST",
+    "headers": {
+        "Authorization": "Bearer {{connection.apiKey}}"
+    },
+    "body": {
+        "minPerDay": "{{parameters.minPerDay}}",
+        "group": "{{parameters.group}}",
+        "socialAccountIds": "{{parameters.socialAccountIds}}",
+        "postIds": "{{parameters.postIds}}",
+        "startDate": "{{if(parameters.startDate, formatDate(parameters.startDate, 'YYYY-MM-DD'))}}",
+        "times": "{{parameters.times}}",
+        "dryRun": "{{parameters.dryRun}}"
+    },
+    "response": {
+        "output": "{{body}}"
+    }
+}

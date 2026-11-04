@@ -1,0 +1,288 @@
+{
+    "fileVersion": 1,
+    "generalCodeFiles": {
+        "base": "general/base.iml.json",
+        "common": null,
+        "readme": "README.md",
+        "groups": "modules/groups.json"
+    },
+    "components": {
+        "connection": {
+            "juzpost": {
+                "label": "JuzPost API key",
+                "connectionType": "basic",
+                "codeFiles": {
+                    "communication": "connections/juzpost/juzpost.communication.iml.json",
+                    "params": "connections/juzpost/juzpost.params.iml.json",
+                    "common": null
+                }
+            }
+        },
+        "module": {
+            "getMyAccount": {
+                "label": "Get My Account",
+                "description": "Returns the user, workspace, plan, entitlements, quotas and the reasons a write would be refused. Call it first in a new scenario.",
+                "moduleType": "action",
+                "actionCrud": "read",
+                "connection": "juzpost",
+                "altConnection": null,
+                "codeFiles": {
+                    "communication": "modules/getMyAccount/getMyAccount.communication.iml.json",
+                    "staticParams": "modules/getMyAccount/getMyAccount.staticParams.iml.json",
+                    "mappableParams": "modules/getMyAccount/getMyAccount.mappableParams.iml.json",
+                    "interface": "modules/getMyAccount/getMyAccount.interface.iml.json",
+                    "samples": "modules/getMyAccount/getMyAccount.samples.iml.json",
+                    "scope": null
+                }
+            },
+            "listAccounts": {
+                "label": "List Connected Accounts",
+                "description": "Returns the connected social accounts. Their IDs are what Schedule a Post takes.",
+                "moduleType": "search",
+                "actionCrud": null,
+                "connection": "juzpost",
+                "altConnection": null,
+                "codeFiles": {
+                    "communication": "modules/listAccounts/listAccounts.communication.iml.json",
+                    "staticParams": "modules/listAccounts/listAccounts.staticParams.iml.json",
+                    "mappableParams": "modules/listAccounts/listAccounts.mappableParams.iml.json",
+                    "interface": "modules/listAccounts/listAccounts.interface.iml.json",
+                    "samples": "modules/listAccounts/listAccounts.samples.iml.json",
+                    "scope": null
+                }
+            },
+            "listGroups": {
+                "label": "List Channel Groups",
+                "description": "Returns the named bundles of accounts. A group name is what Smart Schedule Posts takes.",
+                "moduleType": "search",
+                "actionCrud": null,
+                "connection": "juzpost",
+                "altConnection": null,
+                "codeFiles": {
+                    "communication": "modules/listGroups/listGroups.communication.iml.json",
+                    "staticParams": "modules/listGroups/listGroups.staticParams.iml.json",
+                    "mappableParams": "modules/listGroups/listGroups.mappableParams.iml.json",
+                    "interface": "modules/listGroups/listGroups.interface.iml.json",
+                    "samples": "modules/listGroups/listGroups.samples.iml.json",
+                    "scope": null
+                }
+            },
+            "getGroup": {
+                "label": "Get a Channel Group",
+                "description": "Returns one channel group with the full list of its account IDs.",
+                "moduleType": "action",
+                "actionCrud": "read",
+                "connection": "juzpost",
+                "altConnection": null,
+                "codeFiles": {
+                    "communication": "modules/getGroup/getGroup.communication.iml.json",
+                    "staticParams": "modules/getGroup/getGroup.staticParams.iml.json",
+                    "mappableParams": "modules/getGroup/getGroup.mappableParams.iml.json",
+                    "interface": "modules/getGroup/getGroup.interface.iml.json",
+                    "samples": "modules/getGroup/getGroup.samples.iml.json",
+                    "scope": null
+                }
+            },
+            "listPosts": {
+                "label": "List Posts",
+                "description": "Returns posts newest first. From and To filter on creation time, not on the scheduled time.",
+                "moduleType": "search",
+                "actionCrud": null,
+                "connection": "juzpost",
+                "altConnection": null,
+                "codeFiles": {
+                    "communication": "modules/listPosts/listPosts.communication.iml.json",
+                    "staticParams": "modules/listPosts/listPosts.staticParams.iml.json",
+                    "mappableParams": "modules/listPosts/listPosts.mappableParams.iml.json",
+                    "interface": "modules/listPosts/listPosts.interface.iml.json",
+                    "samples": "modules/listPosts/listPosts.samples.iml.json",
+                    "scope": null
+                }
+            },
+            "getPost": {
+                "label": "Get a Post",
+                "description": "Returns one post with its metadata and the per-account delivery state in Targets.",
+                "moduleType": "action",
+                "actionCrud": "read",
+                "connection": "juzpost",
+                "altConnection": null,
+                "codeFiles": {
+                    "communication": "modules/getPost/getPost.communication.iml.json",
+                    "staticParams": "modules/getPost/getPost.staticParams.iml.json",
+                    "mappableParams": "modules/getPost/getPost.mappableParams.iml.json",
+                    "interface": "modules/getPost/getPost.interface.iml.json",
+                    "samples": "modules/getPost/getPost.samples.iml.json",
+                    "scope": null
+                }
+            },
+            "createPost": {
+                "label": "Create a Draft Post",
+                "description": "Creates a post in draft status. Nothing is published until Schedule a Post or Smart Schedule Posts runs.",
+                "moduleType": "action",
+                "actionCrud": "create",
+                "connection": "juzpost",
+                "altConnection": null,
+                "codeFiles": {
+                    "communication": "modules/createPost/createPost.communication.iml.json",
+                    "staticParams": "modules/createPost/createPost.staticParams.iml.json",
+                    "mappableParams": "modules/createPost/createPost.mappableParams.iml.json",
+                    "interface": "modules/createPost/createPost.interface.iml.json",
+                    "samples": "modules/createPost/createPost.samples.iml.json",
+                    "scope": null
+                }
+            },
+            "updatePost": {
+                "label": "Update a Draft Post",
+                "description": "Edits a post that is still a draft. Omitted fields are left untouched. A scheduled or published post cannot be edited.",
+                "moduleType": "action",
+                "actionCrud": "update",
+                "connection": "juzpost",
+                "altConnection": null,
+                "codeFiles": {
+                    "communication": "modules/updatePost/updatePost.communication.iml.json",
+                    "staticParams": "modules/updatePost/updatePost.staticParams.iml.json",
+                    "mappableParams": "modules/updatePost/updatePost.mappableParams.iml.json",
+                    "interface": "modules/updatePost/updatePost.interface.iml.json",
+                    "samples": "modules/updatePost/updatePost.samples.iml.json",
+                    "scope": null
+                }
+            },
+            "deletePost": {
+                "label": "Delete a Draft Post",
+                "description": "Permanently deletes a post that is still a draft. A scheduled or published post cannot be deleted.",
+                "moduleType": "action",
+                "actionCrud": "delete",
+                "connection": "juzpost",
+                "altConnection": null,
+                "codeFiles": {
+                    "communication": "modules/deletePost/deletePost.communication.iml.json",
+                    "staticParams": "modules/deletePost/deletePost.staticParams.iml.json",
+                    "mappableParams": "modules/deletePost/deletePost.mappableParams.iml.json",
+                    "interface": "modules/deletePost/deletePost.interface.iml.json",
+                    "samples": "modules/deletePost/deletePost.samples.iml.json",
+                    "scope": null
+                }
+            },
+            "uploadMedia": {
+                "label": "Upload a Media File",
+                "description": "Uploads an image or video to the JuzPost media library and returns the Media Key to use in Create a Draft Post.",
+                "moduleType": "action",
+                "actionCrud": "create",
+                "connection": "juzpost",
+                "altConnection": null,
+                "codeFiles": {
+                    "communication": "modules/uploadMedia/uploadMedia.communication.iml.json",
+                    "staticParams": "modules/uploadMedia/uploadMedia.staticParams.iml.json",
+                    "mappableParams": "modules/uploadMedia/uploadMedia.mappableParams.iml.json",
+                    "interface": "modules/uploadMedia/uploadMedia.interface.iml.json",
+                    "samples": "modules/uploadMedia/uploadMedia.samples.iml.json",
+                    "scope": null
+                }
+            },
+            "schedulePost": {
+                "label": "Schedule a Post",
+                "description": "Sends one draft to up to ten accounts at a time, or publishes it right away when Publish At is empty.",
+                "moduleType": "action",
+                "actionCrud": "create",
+                "connection": "juzpost",
+                "altConnection": null,
+                "codeFiles": {
+                    "communication": "modules/schedulePost/schedulePost.communication.iml.json",
+                    "staticParams": "modules/schedulePost/schedulePost.staticParams.iml.json",
+                    "mappableParams": "modules/schedulePost/schedulePost.mappableParams.iml.json",
+                    "interface": "modules/schedulePost/schedulePost.interface.iml.json",
+                    "samples": "modules/schedulePost/schedulePost.samples.iml.json",
+                    "scope": null
+                }
+            },
+            "smartSchedule": {
+                "label": "Smart Schedule Posts",
+                "description": "Spreads drafts across your preset posting times, a minimum number per day. Run with Dry Run on first to see the plan.",
+                "moduleType": "action",
+                "actionCrud": "create",
+                "connection": "juzpost",
+                "altConnection": null,
+                "codeFiles": {
+                    "communication": "modules/smartSchedule/smartSchedule.communication.iml.json",
+                    "staticParams": "modules/smartSchedule/smartSchedule.staticParams.iml.json",
+                    "mappableParams": "modules/smartSchedule/smartSchedule.mappableParams.iml.json",
+                    "interface": "modules/smartSchedule/smartSchedule.interface.iml.json",
+                    "samples": "modules/smartSchedule/smartSchedule.samples.iml.json",
+                    "scope": null
+                }
+            },
+            "watchPosts": {
+                "label": "Watch Posts",
+                "description": "Triggers when a post reaches the chosen status, for example when one is published or fails.",
+                "moduleType": "trigger",
+                "actionCrud": null,
+                "connection": "juzpost",
+                "altConnection": null,
+                "codeFiles": {
+                    "communication": "modules/watchPosts/watchPosts.communication.iml.json",
+                    "staticParams": "modules/watchPosts/watchPosts.staticParams.iml.json",
+                    "mappableParams": "modules/watchPosts/watchPosts.mappableParams.iml.json",
+                    "interface": "modules/watchPosts/watchPosts.interface.iml.json",
+                    "samples": "modules/watchPosts/watchPosts.samples.iml.json",
+                    "scope": null
+                }
+            },
+            "makeApiCall": {
+                "label": "Make an API Call",
+                "description": "Performs an arbitrary authorized call to the JuzPost REST API.",
+                "moduleType": "universal",
+                "actionCrud": null,
+                "connection": "juzpost",
+                "altConnection": null,
+                "codeFiles": {
+                    "communication": "modules/makeApiCall/makeApiCall.communication.iml.json",
+                    "staticParams": "modules/makeApiCall/makeApiCall.staticParams.iml.json",
+                    "mappableParams": "modules/makeApiCall/makeApiCall.mappableParams.iml.json",
+                    "interface": "modules/makeApiCall/makeApiCall.interface.iml.json",
+                    "samples": "modules/makeApiCall/makeApiCall.samples.iml.json",
+                    "scope": null
+                }
+            }
+        },
+        "function": {},
+        "rpc": {
+            "listAccounts": {
+                "label": "List accounts (options)",
+                "connection": "juzpost",
+                "altConnection": null,
+                "codeFiles": {
+                    "communication": "rpcs/listAccounts/listAccounts.communication.iml.json",
+                    "params": "rpcs/listAccounts/listAccounts.params.iml.json"
+                }
+            },
+            "listGroups": {
+                "label": "List channel groups (options, value = id)",
+                "connection": "juzpost",
+                "altConnection": null,
+                "codeFiles": {
+                    "communication": "rpcs/listGroups/listGroups.communication.iml.json",
+                    "params": "rpcs/listGroups/listGroups.params.iml.json"
+                }
+            },
+            "listGroupNames": {
+                "label": "List channel groups (options, value = name)",
+                "connection": "juzpost",
+                "altConnection": null,
+                "codeFiles": {
+                    "communication": "rpcs/listGroupNames/listGroupNames.communication.iml.json",
+                    "params": "rpcs/listGroupNames/listGroupNames.params.iml.json"
+                }
+            }
+        },
+        "webhook": {}
+    },
+    "origins": [
+        {
+            "label": "JuzPost on Make (set appId after creating the app in Make)",
+            "baseUrl": "https://eu2.make.com/api",
+            "appId": "juzpost",
+            "appVersion": 1,
+            "apikeyFile": "../.secrets/make-apikey"
+        }
+    ]
+}

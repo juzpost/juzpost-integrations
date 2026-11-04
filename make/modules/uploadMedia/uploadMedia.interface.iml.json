@@ -1,0 +1,17 @@
+[
+    {
+        "name": "mediaKey",
+        "type": "text",
+        "label": "Media Key"
+    },
+    {
+        "name": "fileName",
+        "type": "text",
+        "label": "File Name"
+    },
+    {
+        "name": "contentType",
+        "type": "text",
+        "label": "Content Type"
+    }
+]

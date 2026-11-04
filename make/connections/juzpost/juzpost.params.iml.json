@@ -1,0 +1,9 @@
+[
+    {
+        "name": "apiKey",
+        "type": "password",
+        "label": "API Key",
+        "required": true,
+        "help": "In JuzPost open Settings, General, then the API keys card and choose Generate API key. The key starts with jp_live_ and is shown once."
+    }
+]

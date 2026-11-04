@@ -1,0 +1,85 @@
+[
+    {
+        "name": "postId",
+        "type": "text",
+        "label": "Post ID",
+        "required": true
+    },
+    {
+        "name": "content",
+        "type": "text",
+        "label": "Content",
+        "multiline": true
+    },
+    {
+        "name": "type",
+        "type": "select",
+        "label": "Post Type",
+        "help": "Anything other than Text and Blog must have at least one media key before it can be scheduled. Blog is a WordPress post: Title is required and Description is the body.",
+        "options": [
+            {
+                "label": "Text",
+                "value": "text"
+            },
+            {
+                "label": "Image",
+                "value": "image"
+            },
+            {
+                "label": "Video",
+                "value": "video"
+            },
+            {
+                "label": "Story",
+                "value": "story"
+            },
+            {
+                "label": "Blog (WordPress)",
+                "value": "blog"
+            }
+        ]
+    },
+    {
+        "name": "mediaKeys",
+        "type": "array",
+        "label": "Media Keys",
+        "help": "Replaces the whole list.",
+        "spec": {
+            "type": "text",
+            "label": "Media Key"
+        },
+        "labels": {
+            "add": "Add a media key"
+        }
+    },
+    {
+        "name": "title",
+        "type": "text",
+        "label": "Title"
+    },
+    {
+        "name": "description",
+        "type": "text",
+        "label": "Description",
+        "multiline": true
+    },
+    {
+        "name": "hashtags",
+        "type": "array",
+        "label": "Hashtags",
+        "help": "Without the leading #. Stored in the post's metadata.",
+        "spec": {
+            "type": "text",
+            "label": "Hashtag"
+        },
+        "labels": {
+            "add": "Add a hashtag"
+        }
+    },
+    {
+        "name": "coverKey",
+        "type": "text",
+        "label": "Cover Image Key",
+        "advanced": true
+    }
+]

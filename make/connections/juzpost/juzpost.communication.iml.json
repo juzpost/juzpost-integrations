@@ -1,0 +1,23 @@
+{
+    "url": "https://www.juzpost.com/api/cli/v1/me",
+    "method": "GET",
+    "headers": {
+        "Authorization": "Bearer {{parameters.apiKey}}",
+        "Accept": "application/json"
+    },
+    "response": {
+        "valid": "{{statusCode === 200}}",
+        "error": {
+            "message": "[{{statusCode}}] {{ifempty(body.error.message, 'The API key was not accepted.')}}"
+        },
+        "metadata": {
+            "type": "text",
+            "value": "{{ifempty(body.user.email, body.workspace.name)}}"
+        }
+    },
+    "log": {
+        "sanitize": [
+            "request.headers.authorization"
+        ]
+    }
+}

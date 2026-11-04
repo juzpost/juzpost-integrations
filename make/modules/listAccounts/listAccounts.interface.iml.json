@@ -1,0 +1,32 @@
+[
+    {
+        "name": "id",
+        "type": "text",
+        "label": "Account ID"
+    },
+    {
+        "name": "username",
+        "type": "text",
+        "label": "Username"
+    },
+    {
+        "name": "platform",
+        "type": "text",
+        "label": "Platform"
+    },
+    {
+        "name": "avatarUrl",
+        "type": "url",
+        "label": "Avatar URL"
+    },
+    {
+        "name": "isActive",
+        "type": "boolean",
+        "label": "Is Active"
+    },
+    {
+        "name": "createdAt",
+        "type": "date",
+        "label": "Connected At"
+    }
+]

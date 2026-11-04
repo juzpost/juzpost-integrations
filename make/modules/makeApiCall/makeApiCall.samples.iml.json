@@ -1,0 +1,14 @@
+{
+    "body": {
+        "data": [],
+        "pagination": {
+            "limit": 20,
+            "nextCursor": null,
+            "hasMore": false
+        }
+    },
+    "headers": {
+        "content-type": "application/json"
+    },
+    "statusCode": 200
+}

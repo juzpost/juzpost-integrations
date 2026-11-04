@@ -1,0 +1,56 @@
+[
+    {
+        "name": "postId",
+        "type": "text",
+        "label": "Post ID",
+        "required": true,
+        "help": "A draft from Create a Draft Post."
+    },
+    {
+        "name": "socialAccountIds",
+        "type": "select",
+        "label": "Social Accounts",
+        "required": true,
+        "multiple": true,
+        "options": "rpc://listAccounts",
+        "validate": {
+            "minItems": 1,
+            "maxItems": 10
+        },
+        "help": "Between one and ten connected accounts. Pick from the list or map account IDs from List Connected Accounts."
+    },
+    {
+        "name": "publishAt",
+        "type": "date",
+        "label": "Publish At",
+        "help": "At least 5 minutes and at most about 6 months ahead. Leave empty to publish now."
+    },
+    {
+        "name": "title",
+        "type": "text",
+        "label": "Title Override",
+        "advanced": true,
+        "help": "Up to 100 characters."
+    },
+    {
+        "name": "description",
+        "type": "text",
+        "label": "Description Override",
+        "advanced": true,
+        "multiline": true
+    },
+    {
+        "name": "hashtags",
+        "type": "array",
+        "label": "Hashtags Override",
+        "help": "Without the leading #. Stored in the post's metadata.",
+        "spec": {
+            "type": "text",
+            "label": "Hashtag"
+        },
+        "labels": {
+            "add": "Add a hashtag"
+        },
+        "advanced": true
+    }
+]

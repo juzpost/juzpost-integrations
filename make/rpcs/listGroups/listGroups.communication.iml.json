@@ -1,0 +1,26 @@
+{
+    "url": "/groups",
+    "method": "GET",
+    "headers": {
+        "Authorization": "Bearer {{connection.apiKey}}"
+    },
+    "qs": {
+        "limit": 100,
+        "sort": "name",
+        "order": "asc"
+    },
+    "response": {
+        "limit": 500,
+        "iterate": "{{body.data}}",
+        "output": {
+            "label": "{{item.name}} ({{item.accountCount}} accounts)",
+            "value": "{{item.id}}"
+        }
+    },
+    "pagination": {
+        "condition": "{{body.pagination.hasMore}}",
+        "qs": {
+            "cursor": "{{body.pagination.nextCursor}}"
+        }
+    }
+}

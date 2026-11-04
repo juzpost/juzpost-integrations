@@ -1,0 +1,15 @@
+[
+    {
+        "name": "name",
+        "type": "text",
+        "label": "Name Contains"
+    },
+    {
+        "name": "limit",
+        "type": "uinteger",
+        "label": "Limit",
+        "default": 20,
+        "required": true,
+        "help": "Maximum number of results to return and work with during one execution cycle."
+    }
+]

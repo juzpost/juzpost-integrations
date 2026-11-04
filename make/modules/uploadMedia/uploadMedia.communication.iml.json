@@ -1,0 +1,41 @@
+[
+    {
+        "url": "/storage/presign",
+        "method": "POST",
+        "headers": {
+            "Authorization": "Bearer {{connection.apiKey}}"
+        },
+        "body": {
+            "relativeKey": "media/{{parameters.fileName}}",
+            "contentType": "{{parameters.contentType}}",
+            "operation": "upload",
+            "contentLength": "{{ifempty(parameters.contentLength, length(parameters.data))}}"
+        },
+        "response": {
+            "temp": {
+                "signedUrl": "{{body.signedUrl}}",
+                "resolvedKey": "{{body.resolvedKey}}"
+            }
+        }
+    },
+    {
+        "url": "{{temp.signedUrl}}",
+        "method": "PUT",
+        "headers": {
+            "Content-Type": "{{parameters.contentType}}"
+        },
+        "type": "binary",
+        "body": "{{parameters.data}}",
+        "response": {
+            "valid": "{{statusCode >= 200 && statusCode < 300}}",
+            "error": {
+                "message": "Storage refused the upload (HTTP {{statusCode}}). The declared Content Type or size did not match the bytes sent."
+            },
+            "output": {
+                "mediaKey": "{{temp.resolvedKey}}",
+                "fileName": "{{parameters.fileName}}",
+                "contentType": "{{parameters.contentType}}"
+            }
+        }
+    }
+]

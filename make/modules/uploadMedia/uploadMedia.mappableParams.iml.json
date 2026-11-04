@@ -1,0 +1,57 @@
+[
+    {
+        "name": "fileName",
+        "type": "filename",
+        "label": "File Name",
+        "required": true,
+        "semantic": "file:name",
+        "help": "Letters, digits, dot, underscore and dash only, for example clip_03.mp4."
+    },
+    {
+        "name": "data",
+        "type": "buffer",
+        "label": "Data",
+        "required": true,
+        "semantic": "file:data"
+    },
+    {
+        "name": "contentType",
+        "type": "select",
+        "label": "Content Type",
+        "required": true,
+        "help": "Must match the file. Videos up to 500 MB, images up to 15 MB.",
+        "options": [
+            {
+                "label": "video/mp4",
+                "value": "video/mp4"
+            },
+            {
+                "label": "video/quicktime (.mov)",
+                "value": "video/quicktime"
+            },
+            {
+                "label": "video/webm",
+                "value": "video/webm"
+            },
+            {
+                "label": "image/jpeg",
+                "value": "image/jpeg"
+            },
+            {
+                "label": "image/png",
+                "value": "image/png"
+            },
+            {
+                "label": "image/webp",
+                "value": "image/webp"
+            }
+        ]
+    },
+    {
+        "name": "contentLength",
+        "type": "uinteger",
+        "label": "File Size (bytes)",
+        "advanced": true,
+        "help": "Leave empty to compute it from the data. Set it when the upstream module reports the size."
+    }
+]

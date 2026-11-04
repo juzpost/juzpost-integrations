@@ -1,0 +1,10 @@
+{
+    "url": "/posts/{{parameters.postId}}",
+    "method": "DELETE",
+    "headers": {
+        "Authorization": "Bearer {{connection.apiKey}}"
+    },
+    "response": {
+        "output": "{{body}}"
+    }
+}

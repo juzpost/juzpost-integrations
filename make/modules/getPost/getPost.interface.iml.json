@@ -1,0 +1,148 @@
+[
+    {
+        "name": "id",
+        "type": "text",
+        "label": "Post ID"
+    },
+    {
+        "name": "status",
+        "type": "text",
+        "label": "Status"
+    },
+    {
+        "name": "type",
+        "type": "text",
+        "label": "Type"
+    },
+    {
+        "name": "title",
+        "type": "text",
+        "label": "Title"
+    },
+    {
+        "name": "content",
+        "type": "text",
+        "label": "Content"
+    },
+    {
+        "name": "mediaUrls",
+        "type": "array",
+        "label": "Media Keys",
+        "spec": {
+            "type": "text",
+            "label": "Media Key"
+        }
+    },
+    {
+        "name": "coverR2Key",
+        "type": "text",
+        "label": "Cover Key"
+    },
+    {
+        "name": "scheduledFor",
+        "type": "date",
+        "label": "Scheduled For"
+    },
+    {
+        "name": "metadata",
+        "type": "collection",
+        "label": "Metadata",
+        "spec": [
+            {
+                "name": "title",
+                "type": "text",
+                "label": "Title"
+            },
+            {
+                "name": "description",
+                "type": "text",
+                "label": "Description"
+            },
+            {
+                "name": "hashtags",
+                "type": "array",
+                "label": "Hashtags",
+                "spec": {
+                    "type": "text",
+                    "label": "Hashtag"
+                }
+            },
+            {
+                "name": "source",
+                "type": "text",
+                "label": "Source"
+            },
+            {
+                "name": "client",
+                "type": "text",
+                "label": "Client"
+            }
+        ]
+    },
+    {
+        "name": "socialAccountIds",
+        "type": "array",
+        "label": "Account IDs",
+        "spec": {
+            "type": "text",
+            "label": "Account ID"
+        }
+    },
+    {
+        "name": "targets",
+        "type": "array",
+        "label": "Targets",
+        "spec": [
+            {
+                "name": "socialAccountId",
+                "type": "text",
+                "label": "Account ID"
+            },
+            {
+                "name": "platform",
+                "type": "text",
+                "label": "Platform"
+            },
+            {
+                "name": "username",
+                "type": "text",
+                "label": "Username"
+            },
+            {
+                "name": "status",
+                "type": "text",
+                "label": "Status"
+            },
+            {
+                "name": "publishAt",
+                "type": "date",
+                "label": "Publish At"
+            },
+            {
+                "name": "publishedAt",
+                "type": "date",
+                "label": "Published At"
+            },
+            {
+                "name": "error",
+                "type": "text",
+                "label": "Error"
+            },
+            {
+                "name": "link",
+                "type": "url",
+                "label": "Link"
+            }
+        ]
+    },
+    {
+        "name": "createdAt",
+        "type": "date",
+        "label": "Created At"
+    },
+    {
+        "name": "updatedAt",
+        "type": "date",
+        "label": "Updated At"
+    }
+]

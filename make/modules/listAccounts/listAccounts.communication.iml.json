@@ -1,0 +1,25 @@
+{
+    "url": "/accounts",
+    "method": "GET",
+    "headers": {
+        "Authorization": "Bearer {{connection.apiKey}}"
+    },
+    "qs": {
+        "platform": "{{parameters.platform}}",
+        "groupId": "{{parameters.groupId}}",
+        "sort": "{{parameters.sort}}",
+        "order": "{{parameters.order}}",
+        "limit": 100
+    },
+    "response": {
+        "iterate": "{{body.data}}",
+        "output": "{{item}}",
+        "limit": "{{parameters.limit}}"
+    },
+    "pagination": {
+        "condition": "{{body.pagination.hasMore}}",
+        "qs": {
+            "cursor": "{{body.pagination.nextCursor}}"
+        }
+    }
+}

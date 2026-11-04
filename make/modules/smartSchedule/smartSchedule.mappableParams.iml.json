@@ -1,0 +1,63 @@
+[
+    {
+        "name": "minPerDay",
+        "type": "uinteger",
+        "label": "Posts Per Day",
+        "required": true,
+        "default": 1,
+        "help": "1 to 20, and not more than the number of posting times."
+    },
+    {
+        "name": "group",
+        "type": "select",
+        "label": "Channel Group",
+        "options": "rpc://listGroupNames",
+        "help": "Every post goes to every account in the group. Or map explicit accounts below."
+    },
+    {
+        "name": "socialAccountIds",
+        "type": "select",
+        "label": "Social Accounts",
+        "required": false,
+        "multiple": true,
+        "options": "rpc://listAccounts",
+        "validate": {
+            "maxItems": 10
+        },
+        "help": "Used instead of the group when set."
+    },
+    {
+        "name": "postIds",
+        "type": "array",
+        "label": "Post IDs",
+        "spec": {
+            "type": "text",
+            "label": "Post ID"
+        },
+        "help": "Specific drafts, in the order to place them. Leave empty to schedule every draft, oldest first."
+    },
+    {
+        "name": "startDate",
+        "type": "date",
+        "label": "Start Date",
+        "time": false,
+        "help": "First day to place posts on. Defaults to tomorrow."
+    },
+    {
+        "name": "times",
+        "type": "array",
+        "label": "Posting Times",
+        "spec": {
+            "type": "text",
+            "label": "HH:MM"
+        },
+        "help": "Wall-clock times in the workspace timezone, overriding the workspace defaults for this run."
+    },
+    {
+        "name": "dryRun",
+        "type": "boolean",
+        "label": "Dry Run",
+        "default": false,
+        "help": "Return the plan without creating any timers."
+    }
+]

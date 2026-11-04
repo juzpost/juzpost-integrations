@@ -1,0 +1,44 @@
+{
+    "baseUrl": "https://www.juzpost.com/api/cli/v1",
+    "headers": {
+        "Accept": "application/json"
+    },
+    "response": {
+        "error": {
+            "message": "[{{statusCode}}] {{ifempty(body.error.message, body.error)}}",
+            "400": {
+                "type": "DataError",
+                "message": "[400] {{body.error.message}}"
+            },
+            "401": {
+                "type": "InvalidAccessTokenError",
+                "message": "[401] The API key is missing, revoked or wrong. Create a new one under Settings, General, API keys."
+            },
+            "402": {
+                "type": "InvalidConfigurationError",
+                "message": "[402] {{body.error.message}}"
+            },
+            "404": {
+                "type": "DataError",
+                "message": "[404] {{body.error.message}}"
+            },
+            "409": {
+                "type": "DataError",
+                "message": "[409] {{body.error.message}}"
+            },
+            "422": {
+                "type": "DataError",
+                "message": "[422] {{body.error.message}}"
+            },
+            "429": {
+                "type": "RateLimitError",
+                "message": "[429] {{body.error.message}}"
+            }
+        }
+    },
+    "log": {
+        "sanitize": [
+            "request.headers.authorization"
+        ]
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+    "status": "scheduled",
+    "type": "video",
+    "title": "Three edits that stop the scroll",
+    "content": "Three edits that stop the scroll in the first second.",
+    "mediaUrls": [
+        "ws_abc123/media/clip_03.mp4"
+    ],
+    "coverR2Key": null,
+    "scheduledFor": "2026-11-10T14:00:00.000Z",
+    "metadata": {
+        "title": "Three edits that stop the scroll",
+        "description": "",
+        "hashtags": [
+            "editing",
+            "shorts"
+        ],
+        "source": "connector",
+        "client": "make"
+    },
+    "socialAccountIds": [
+        "0f1c2d3e-4a5b-4c6d-8e9f-0a1b2c3d4e5f"
+    ],
+    "targets": [
+        {
+            "socialAccountId": "0f1c2d3e-4a5b-4c6d-8e9f-0a1b2c3d4e5f",
+            "platform": "instagram",
+            "username": "juzpost",
+            "status": "scheduled",
+            "publishAt": "2026-11-10T14:00:00.000Z",
+            "publishedAt": null,
+            "error": null,
+            "link": null
+        }
+    ],
+    "createdAt": "2026-11-04T09:00:00.000Z",
+    "updatedAt": "2026-11-04T09:30:00.000Z"
+}

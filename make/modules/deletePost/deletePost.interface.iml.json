@@ -1,0 +1,34 @@
+[
+    {
+        "name": "deleted",
+        "type": "boolean",
+        "label": "Deleted"
+    },
+    {
+        "name": "post",
+        "type": "collection",
+        "label": "Deleted Post",
+        "spec": [
+            {
+                "name": "title",
+                "type": "text",
+                "label": "Title"
+            },
+            {
+                "name": "content",
+                "type": "text",
+                "label": "Content"
+            },
+            {
+                "name": "type",
+                "type": "text",
+                "label": "Type"
+            },
+            {
+                "name": "mediaCount",
+                "type": "uinteger",
+                "label": "Media Count"
+            }
+        ]
+    }
+]

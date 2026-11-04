@@ -1,0 +1,56 @@
+[
+    {
+        "name": "id",
+        "type": "text",
+        "label": "Post ID"
+    },
+    {
+        "name": "status",
+        "type": "text",
+        "label": "Status"
+    },
+    {
+        "name": "type",
+        "type": "text",
+        "label": "Type"
+    },
+    {
+        "name": "title",
+        "type": "text",
+        "label": "Title"
+    },
+    {
+        "name": "content",
+        "type": "text",
+        "label": "Content"
+    },
+    {
+        "name": "mediaUrls",
+        "type": "array",
+        "label": "Media Keys",
+        "spec": {
+            "type": "text",
+            "label": "Media Key"
+        }
+    },
+    {
+        "name": "scheduledFor",
+        "type": "date",
+        "label": "Scheduled For"
+    },
+    {
+        "name": "coverR2Key",
+        "type": "text",
+        "label": "Cover Key"
+    },
+    {
+        "name": "createdAt",
+        "type": "date",
+        "label": "Created At"
+    },
+    {
+        "name": "updatedAt",
+        "type": "date",
+        "label": "Updated At"
+    }
+]

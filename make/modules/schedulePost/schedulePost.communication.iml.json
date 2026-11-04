@@ -1,0 +1,17 @@
+{
+    "url": "/posts/{{parameters.postId}}/schedule",
+    "method": "POST",
+    "headers": {
+        "Authorization": "Bearer {{connection.apiKey}}"
+    },
+    "body": {
+        "socialAccountIds": "{{parameters.socialAccountIds}}",
+        "publishAt": "{{parameters.publishAt}}",
+        "title": "{{parameters.title}}",
+        "description": "{{parameters.description}}",
+        "hashtags": "{{parameters.hashtags}}"
+    },
+    "response": {
+        "output": "{{body}}"
+    }
+}

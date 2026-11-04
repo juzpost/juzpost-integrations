@@ -1,0 +1,21 @@
+{
+    "url": "/posts/{{parameters.postId}}",
+    "method": "PATCH",
+    "headers": {
+        "Authorization": "Bearer {{connection.apiKey}}"
+    },
+    "body": {
+        "content": "{{parameters.content}}",
+        "type": "{{parameters.type}}",
+        "title": "{{parameters.title}}",
+        "description": "{{parameters.description}}",
+        "hashtags": "{{parameters.hashtags}}",
+        "mediaUrls": "{{parameters.mediaKeys}}",
+        "coverR2Key": "{{parameters.coverKey}}"
+    },
+    "response": {
+        "output": {
+            "id": "{{body.id}}"
+        }
+    }
+}

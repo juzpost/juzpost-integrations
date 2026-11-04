@@ -1,0 +1,22 @@
+{
+    "scheduled": [
+        {
+            "postId": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+            "publishAt": "2026-11-05T03:30:00.000Z",
+            "accountIds": [
+                "0f1c2d3e-4a5b-4c6d-8e9f-0a1b2c3d4e5f"
+            ],
+            "status": "scheduled"
+        }
+    ],
+    "skipped": [],
+    "plan": {
+        "timezone": "Asia/Kolkata",
+        "perDay": 1,
+        "days": 1,
+        "slotsUsed": [
+            "09:00"
+        ]
+    },
+    "dryRun": false
+}

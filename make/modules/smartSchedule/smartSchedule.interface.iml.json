@@ -1,0 +1,91 @@
+[
+    {
+        "name": "scheduled",
+        "type": "array",
+        "label": "Scheduled",
+        "spec": [
+            {
+                "name": "postId",
+                "type": "text",
+                "label": "Post ID"
+            },
+            {
+                "name": "publishAt",
+                "type": "date",
+                "label": "Publish At"
+            },
+            {
+                "name": "accountIds",
+                "type": "array",
+                "label": "Account IDs",
+                "spec": {
+                    "type": "text",
+                    "label": "Account ID"
+                }
+            },
+            {
+                "name": "status",
+                "type": "text",
+                "label": "Status"
+            },
+            {
+                "name": "error",
+                "type": "text",
+                "label": "Error"
+            }
+        ]
+    },
+    {
+        "name": "skipped",
+        "type": "array",
+        "label": "Skipped",
+        "spec": [
+            {
+                "name": "postId",
+                "type": "text",
+                "label": "Post ID"
+            },
+            {
+                "name": "reason",
+                "type": "text",
+                "label": "Reason"
+            }
+        ]
+    },
+    {
+        "name": "plan",
+        "type": "collection",
+        "label": "Plan",
+        "spec": [
+            {
+                "name": "timezone",
+                "type": "text",
+                "label": "Timezone"
+            },
+            {
+                "name": "perDay",
+                "type": "uinteger",
+                "label": "Per Day"
+            },
+            {
+                "name": "days",
+                "type": "uinteger",
+                "label": "Days"
+            },
+            {
+                "name": "slotsUsed",
+                "type": "array",
+                "label": "Slots Used",
+                "spec": {
+                    "type": "text",
+                    "label": "HH:MM"
+                }
+            }
+        ]
+    },
+    {
+        "name": "dryRun",
+        "type": "boolean",
+        "label": "Dry Run"
+    }
+]

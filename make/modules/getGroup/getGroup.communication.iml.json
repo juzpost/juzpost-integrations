@@ -1,0 +1,10 @@
+{
+    "url": "/groups/{{parameters.groupId}}",
+    "method": "GET",
+    "headers": {
+        "Authorization": "Bearer {{connection.apiKey}}"
+    },
+    "response": {
+        "output": "{{body}}"
+    }
+}

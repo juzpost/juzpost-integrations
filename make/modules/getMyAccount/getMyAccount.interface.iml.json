@@ -1,0 +1,141 @@
+[
+    {
+        "name": "user",
+        "type": "collection",
+        "label": "User",
+        "spec": [
+            {
+                "name": "id",
+                "type": "text",
+                "label": "User ID"
+            },
+            {
+                "name": "email",
+                "type": "email",
+                "label": "Email"
+            }
+        ]
+    },
+    {
+        "name": "credential",
+        "type": "collection",
+        "label": "Credential",
+        "spec": [
+            {
+                "name": "type",
+                "type": "text",
+                "label": "Type"
+            },
+            {
+                "name": "scopes",
+                "type": "array",
+                "label": "Scopes",
+                "spec": {
+                    "type": "text",
+                    "label": "Scope"
+                }
+            },
+            {
+                "name": "expiresAt",
+                "type": "date",
+                "label": "Expires At"
+            }
+        ]
+    },
+    {
+        "name": "workspace",
+        "type": "collection",
+        "label": "Workspace",
+        "spec": [
+            {
+                "name": "id",
+                "type": "text",
+                "label": "Workspace ID"
+            },
+            {
+                "name": "name",
+                "type": "text",
+                "label": "Name"
+            },
+            {
+                "name": "slug",
+                "type": "text",
+                "label": "Slug"
+            },
+            {
+                "name": "role",
+                "type": "text",
+                "label": "Role"
+            },
+            {
+                "name": "timezone",
+                "type": "text",
+                "label": "Timezone"
+            },
+            {
+                "name": "defaultTimes",
+                "type": "array",
+                "label": "Default Posting Times",
+                "spec": {
+                    "type": "text",
+                    "label": "HH:MM"
+                }
+            }
+        ]
+    },
+    {
+        "name": "plan",
+        "type": "collection",
+        "label": "Plan",
+        "spec": [
+            {
+                "name": "id",
+                "type": "text",
+                "label": "Plan ID"
+            },
+            {
+                "name": "name",
+                "type": "text",
+                "label": "Name"
+            },
+            {
+                "name": "trialActive",
+                "type": "boolean",
+                "label": "Trial Active"
+            }
+        ]
+    },
+    {
+        "name": "billing",
+        "type": "collection",
+        "label": "Billing",
+        "spec": []
+    },
+    {
+        "name": "entitlements",
+        "type": "collection",
+        "label": "Entitlements",
+        "spec": []
+    },
+    {
+        "name": "quotas",
+        "type": "collection",
+        "label": "Quotas",
+        "spec": []
+    },
+    {
+        "name": "limits",
+        "type": "collection",
+        "label": "Limits",
+        "spec": []
+    },
+    {
+        "name": "blocked",
+        "type": "array",
+        "label": "Blocked Reasons",
+        "spec": {
+            "type": "text",
+            "label": "Reason"
+        }
+    }
+]

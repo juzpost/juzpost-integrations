@@ -1,0 +1,36 @@
+[
+    {
+        "label": "Posts",
+        "modules": [
+            "createPost",
+            "uploadMedia",
+            "schedulePost",
+            "smartSchedule",
+            "getPost",
+            "updatePost",
+            "deletePost",
+            "listPosts"
+        ]
+    },
+    {
+        "label": "Triggers",
+        "modules": [
+            "watchPosts"
+        ]
+    },
+    {
+        "label": "Accounts",
+        "modules": [
+            "listAccounts",
+            "listGroups",
+            "getGroup",
+            "getMyAccount"
+        ]
+    },
+    {
+        "label": "Other",
+        "modules": [
+            "makeApiCall"
+        ]
+    }
+]

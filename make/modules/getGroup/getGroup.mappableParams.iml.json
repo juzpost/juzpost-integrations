@@ -1,0 +1,9 @@
+[
+    {
+        "name": "groupId",
+        "type": "select",
+        "label": "Channel Group",
+        "required": true,
+        "options": "rpc://listGroups"
+    }
+]

@@ -1,0 +1,30 @@
+{
+    "url": "/posts",
+    "method": "GET",
+    "headers": {
+        "Authorization": "Bearer {{connection.apiKey}}"
+    },
+    "qs": {
+        "status": "{{parameters.status}}",
+        "sort": "createdAt",
+        "order": "desc",
+        "limit": 100
+    },
+    "response": {
+        "iterate": "{{body.data}}",
+        "output": "{{item}}",
+        "limit": "{{parameters.limit}}",
+        "trigger": {
+            "id": "{{item.id}}",
+            "date": "{{item.updatedAt}}",
+            "type": "date",
+            "order": "desc"
+        }
+    },
+    "pagination": {
+        "condition": "{{body.pagination.hasMore}}",
+        "qs": {
+            "cursor": "{{body.pagination.nextCursor}}"
+        }
+    }
+}
