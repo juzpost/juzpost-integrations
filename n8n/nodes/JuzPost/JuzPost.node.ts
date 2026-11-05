@@ -96,7 +96,7 @@ export class JuzPost implements INodeType {
 				typeOptions: { rows: 4 },
 				default: '',
 				description: 'The caption or body, up to 2200 characters',
-				displayOptions: show('post', ['create', 'update']),
+				displayOptions: show('post', ['create']),
 			},
 			{
 				displayName: 'Post Type',
@@ -115,14 +115,6 @@ export class JuzPost implements INodeType {
 				displayOptions: show('post', ['create']),
 			},
 			{
-				displayName: 'Media Keys',
-				name: 'mediaKeys',
-				type: 'string',
-				default: '',
-				description: 'Comma-separated media keys returned by Media, Upload, in publish order',
-				displayOptions: show('post', ['create', 'update']),
-			},
-			{
 				displayName: 'Additional Fields',
 				name: 'additionalFields',
 				type: 'collection',
@@ -130,9 +122,11 @@ export class JuzPost implements INodeType {
 				default: {},
 				displayOptions: show('post', ['create', 'update']),
 				options: [
+					{ displayName: 'Content', name: 'content', type: 'string', typeOptions: { rows: 4 }, default: '', description: 'The caption or body, up to 2200 characters', displayOptions: { show: { '/operation': ['update'] } } },
 					{ displayName: 'Cover Image Key', name: 'coverR2Key', type: 'string', default: '' },
 					{ displayName: 'Description', name: 'description', type: 'string', typeOptions: { rows: 3 }, default: '' },
 					{ displayName: 'Hashtags', name: 'hashtags', type: 'string', default: '', description: 'Comma-separated, without the # prefix' },
+					{ displayName: 'Media Keys', name: 'mediaKeys', type: 'string', default: '', description: 'Comma-separated media keys returned by Media, Upload, in publish order' },
 					{ displayName: 'Post Type', name: 'type', type: 'options', options: [
 						{ name: 'Blog (WordPress)', value: 'blog' }, { name: 'Image', value: 'image' }, { name: 'Story', value: 'story' }, { name: 'Text', value: 'text' }, { name: 'Video', value: 'video' },
 					], default: 'text', displayOptions: { show: { '/operation': ['update'] } } },
@@ -152,13 +146,22 @@ export class JuzPost implements INodeType {
 				displayOptions: show('post', ['schedule']),
 			},
 			{
-				displayName: 'Publish At',
-				name: 'publishAt',
-				type: 'dateTime',
-				default: '',
-				description:
-					'At least 10 minutes and at most about 6 months ahead. Leave empty to publish now.',
+				displayName: 'Options',
+				name: 'scheduleOptions',
+				type: 'collection',
+				placeholder: 'Add Option',
+				default: {},
+				description: 'Without Publish At the post is published now',
 				displayOptions: show('post', ['schedule']),
+				options: [
+					{
+						displayName: 'Publish At',
+						name: 'publishAt',
+						type: 'dateTime',
+						default: '',
+						description: 'At least 10 minutes and at most about 6 months ahead. Leave empty to publish now.',
+					},
+				],
 			},
 			{
 				displayName: 'Overrides',
@@ -199,6 +202,7 @@ export class JuzPost implements INodeType {
 				name: 'group',
 				type: 'options',
 				typeOptions: { loadOptionsMethod: 'getGroupNames' },
+				required: true,
 				default: '',
 				description: 'Choose from the list, or specify a name using an <a href="https://docs.n8n.io/code/expressions/">expression</a>. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>.',
 				displayOptions: { show: { resource: ['post'], operation: ['smartSchedule'], target: ['group'] } },
@@ -208,6 +212,7 @@ export class JuzPost implements INodeType {
 				name: 'smartAccountIds',
 				type: 'multiOptions',
 				typeOptions: { loadOptionsMethod: 'getAccounts' },
+				required: true,
 				default: [],
 				description:
 					'Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
@@ -334,12 +339,21 @@ export class JuzPost implements INodeType {
 				displayOptions: show('media', ['upload']),
 			},
 			{
-				displayName: 'File Name',
-				name: 'fileName',
-				type: 'string',
-				default: '',
-				description: 'Letters, digits, dot, underscore and dash. Defaults to the binary file name.',
+				displayName: 'Options',
+				name: 'uploadOptions',
+				type: 'collection',
+				placeholder: 'Add Option',
+				default: {},
 				displayOptions: show('media', ['upload']),
+				options: [
+					{
+						displayName: 'File Name',
+						name: 'fileName',
+						type: 'string',
+						default: '',
+						description: 'Letters, digits, dot, underscore and dash. Defaults to the binary file name.',
+					},
+				],
 			},
 
 			// ───────────────────────────── Workspace
@@ -432,7 +446,8 @@ async function uploadMedia(this: IExecuteFunctions, i: number): Promise<IDataObj
 	const binaryPropertyName = this.getNodeParameter('binaryPropertyName', i) as string;
 	const binary = this.helpers.assertBinaryData(i, binaryPropertyName);
 	const buffer = await this.helpers.getBinaryDataBuffer(i, binaryPropertyName);
-	const fileName = ((this.getNodeParameter('fileName', i, '') as string) || binary.fileName || 'upload.bin')
+	const uploadOptions = this.getNodeParameter('uploadOptions', i, {}) as IDataObject;
+	const fileName = ((uploadOptions.fileName as string) || binary.fileName || 'upload.bin')
 		.replace(/[^A-Za-z0-9._-]/g, '_');
 	const contentType = binary.mimeType || 'application/octet-stream';
 
@@ -459,9 +474,9 @@ async function postOperation(this: IExecuteFunctions, i: number, operation: stri
 		case 'update': {
 			const extra = this.getNodeParameter('additionalFields', i, {}) as IDataObject;
 			const body = clean({
-				content: this.getNodeParameter('content', i, '') as string,
+				content: operation === 'create' ? (this.getNodeParameter('content', i, '') as string) : extra.content,
 				type: operation === 'create' ? (this.getNodeParameter('type', i) as string) : extra.type,
-				mediaUrls: csv(this.getNodeParameter('mediaKeys', i, '') as string),
+				mediaUrls: csv(extra.mediaKeys as string),
 				title: extra.title,
 				description: extra.description,
 				hashtags: csv(extra.hashtags as string),
@@ -486,10 +501,12 @@ async function postOperation(this: IExecuteFunctions, i: number, operation: stri
 		case 'schedule': {
 			const postId = this.getNodeParameter('postId', i) as string;
 			const overrides = this.getNodeParameter('overrides', i, {}) as IDataObject;
-			const publishAt = this.getNodeParameter('publishAt', i, '') as string;
+			const { publishAt } = this.getNodeParameter('scheduleOptions', i, {}) as IDataObject;
 			const body = clean({
 				socialAccountIds: csv(this.getNodeParameter('socialAccountIds', i) as string[]),
-				publishAt: publishAt ? new Date(publishAt).toISOString() : undefined,
+				// The API publishes immediately only when asked: no time sends publishNow.
+				publishAt: publishAt ? new Date(publishAt as string).toISOString() : undefined,
+				publishNow: publishAt ? undefined : true,
 				title: overrides.title,
 				description: overrides.description,
 				hashtags: csv(overrides.hashtags as string),
